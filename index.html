@@ -1,0 +1,681 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TRANSIT NEXUS | Move Different</title>
+
+    <meta name="description"
+        content="Explore bus routes, check occupancy and discover smarter public transportation with Transit Nexus.">
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- LEAFLET MAP CSS -->
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <!-- OUR CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <header class="navbar">
+
+        <a href="#" class="brand">
+            <span class="brand-icon">N</span>
+            <span>TRANSIT<span class="brand-orange">NEXUS</span></span>
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#explore">Explore</a>
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How it works</a>
+            <a href="#portals">Portals</a>
+        </nav>
+
+        <a href="#explore" class="nav-button">
+            FIND YOUR BUS <span>↗</span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle">
+            ☰
+        </button>
+
+    </header>
+
+
+    <main>
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="hero-tag">
+                    <span class="pulse-dot"></span>
+                    YOUR CITY. YOUR MOVEMENT.
+                </div>
+
+                <h1>
+                    DON'T JUST<br>
+                    <span>WAIT.</span> MOVE.
+                </h1>
+
+                <p class="hero-description">
+                    Your daily commute just got smarter.
+
+                    Track buses, discover routes, check passenger
+                    availability and stay one step ahead
+                    of your journey.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a href="#explore" class="primary-button">
+                        LET'S MOVE <span>↗</span>
+                    </a>
+
+                    <a href="#how-it-works" class="secondary-button">
+                        HOW IT WORKS
+                    </a>
+
+                </div>
+
+                <div class="hero-caption">
+                    <span class="caption-line"></span>
+                    BUILT FOR THE WAY YOUR CITY MOVES.
+                </div>
+
+            </div>
+
+
+            <!-- HERO SIDE CARD -->
+
+            <div class="hero-side">
+
+                <div class="hero-orbit"></div>
+
+                <div class="hero-sticker">
+                    <span>MOVE</span>
+                    <strong>∞</strong>
+                    <span>SMARTER</span>
+                </div>
+
+                <div class="hero-side-card">
+
+                    <span class="card-label">
+                        THE NEW WAY TO COMMUTE
+                    </span>
+
+                    <div class="hero-side-icon">
+                        ↗
+                    </div>
+
+                    <h3>
+                        Your bus.<br>
+                        Your time.<br>
+                        Your move.
+                    </h3>
+
+                    <span class="card-footer">
+                        TRANSIT NEXUS / 001
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- INTERACTIVE MAP SECTION -->
+
+        <section class="explore-section" id="explore">
+
+            <div class="explore-heading">
+
+                <div>
+
+                    <span class="section-tag">
+                        <span class="pulse-dot"></span>
+                        THE CITY IS YOURS
+                    </span>
+
+                    <h2>
+                        FIND YOUR<br>
+                        <span>WAY AROUND.</span>
+                    </h2>
+
+                    <p>
+                        Explore the network. Find your bus.
+                        Know what's happening on your route.
+                    </p>
+
+                </div>
+
+                <div class="map-heading-note">
+                    <span class="map-status-dot"></span>
+                    INTERACTIVE CITY MAP
+                </div>
+
+            </div>
+
+
+            <div class="map-dashboard">
+
+                <!-- MAP AREA -->
+
+                <div class="map-container">
+
+                    <div class="map-toolbar">
+
+                        <div class="map-toolbar-title">
+                            <span>⌖</span>
+                            NETWORK EXPLORER
+                        </div>
+
+                        <div class="map-toolbar-right">
+                            <span class="map-demo-badge">
+                                DEMO NETWORK
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- REAL LEAFLET MAP -->
+
+                    <div id="map">
+
+                        <div class="map-loading">
+                            <span>⌖</span>
+                            <p>Preparing your city map...</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="map-legend">
+
+                        <span>
+                            <i class="legend-bus"></i>
+                            BUS
+                        </span>
+
+                        <span>
+                            <i class="legend-stop"></i>
+                            BUS STOP
+                        </span>
+
+                        <span>
+                            <i class="legend-route"></i>
+                            ROUTE
+                        </span>
+
+                    </div>
+
+
+                    <div class="map-bottom-note">
+                        MAP DATA IS ILLUSTRATIVE
+                    </div>
+
+                </div>
+
+
+                <!-- MAP CONTROL PANEL -->
+
+                <aside class="map-sidebar">
+
+                    <div class="sidebar-header">
+
+                        <div>
+                            <span class="sidebar-label">
+                                YOUR JOURNEY STARTS HERE
+                            </span>
+
+                            <h3>Where to?</h3>
+                        </div>
+
+                        <span class="sidebar-emoji">✳</span>
+
+                    </div>
+
+
+                    <!-- SEARCH -->
+
+                    <form id="busSearchForm">
+
+                        <label for="busSearch">
+                            SEARCH BUS OR DESTINATION
+                        </label>
+
+                        <div class="search-box">
+
+                            <span>⌕</span>
+
+                            <input
+                                type="text"
+                                id="busSearch"
+                                placeholder="e.g. Uppal or 218"
+                                autocomplete="off"
+                                required
+                            >
+
+                        </div>
+
+                        <button type="submit" class="search-submit">
+                            FIND MY BUS <span>↗</span>
+                        </button>
+
+                    </form>
+
+
+                    <div id="searchMessage"
+                        class="search-message"
+                        aria-live="polite">
+                    </div>
+
+
+                    <div class="sidebar-divider"></div>
+
+
+                    <!-- MAP FILTERS -->
+
+                    <div class="sidebar-label">
+                        EXPLORE BY CATEGORY
+                    </div>
+
+                    <div class="map-filters">
+
+                        <button class="filter-button active"
+                            data-filter="all">
+                            ALL
+                        </button>
+
+                        <button class="filter-button"
+                            data-filter="buses">
+                            BUSES
+                        </button>
+
+                        <button class="filter-button"
+                            data-filter="stops">
+                            STOPS
+                        </button>
+
+                    </div>
+
+
+                    <div class="sidebar-divider"></div>
+
+
+                    <!-- NETWORK SNAPSHOT -->
+
+                    <div class="sidebar-label">
+                        NETWORK SNAPSHOT
+                    </div>
+
+                    <div class="network-stat">
+
+                        <div class="stat-icon orange-bg">↗</div>
+
+                        <div>
+                            <strong>Bus routes</strong>
+                            <small>Explore available routes</small>
+                        </div>
+
+                        <span class="stat-arrow">→</span>
+
+                    </div>
+
+
+                    <div class="network-stat">
+
+                        <div class="stat-icon lime-bg">◉</div>
+
+                        <div>
+                            <strong>Occupancy</strong>
+                            <small>Check passenger availability</small>
+                        </div>
+
+                        <span class="stat-arrow">→</span>
+
+                    </div>
+
+
+                    <div class="network-stat">
+
+                        <div class="stat-icon purple-bg">◎</div>
+
+                        <div>
+                            <strong>Community updates</strong>
+                            <small>Passenger-assisted reports</small>
+                        </div>
+
+                        <span class="stat-arrow">→</span>
+
+                    </div>
+
+
+                    <div class="sidebar-disclaimer">
+                        Demo locations and sample data.
+                        Live RTC integration is planned.
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+
+        <!-- FEATURES -->
+
+        <section class="features-section" id="features">
+
+            <div class="section-tag">
+                NOT YOUR ORDINARY BUS TRACKER
+            </div>
+
+            <div class="section-heading">
+
+                <h2>
+                    SMALLER WAITS.<br>
+                    <span>SMARTER MOVES.</span>
+                </h2>
+
+                <p>
+                    Everything you need to make everyday
+                    public transportation easier.
+                </p>
+
+            </div>
+
+
+            <div class="feature-grid">
+
+                <article class="feature-card orange-card">
+
+                    <span class="feature-number">01 / TRACK</span>
+
+                    <div class="feature-art">⌖</div>
+
+                    <h3>Bus tracking</h3>
+
+                    <p>
+                        Find your bus and view its last
+                        reported location and remaining stops.
+                    </p>
+
+                </article>
+
+
+                <article class="feature-card lime-card">
+
+                    <span class="feature-number">02 / CAPACITY</span>
+
+                    <div class="feature-art">◉</div>
+
+                    <h3>Smart occupancy</h3>
+
+                    <p>
+                        Know whether a bus has available
+                        seating or limited boarding space.
+                    </p>
+
+                </article>
+
+
+                <article class="feature-card purple-card">
+
+                    <span class="feature-number">03 / COMMUNITY</span>
+
+                    <div class="feature-art">◎</div>
+
+                    <h3>People-powered tracking</h3>
+
+                    <p>
+                        Help update bus locations when
+                        a conductor misses a check-in.
+                    </p>
+
+                </article>
+
+
+                <article class="feature-card dark-card">
+
+                    <span class="feature-number">04 / INTELLIGENCE</span>
+
+                    <div class="feature-art">⌁</div>
+
+                    <h3>Delay updates</h3>
+
+                    <p>
+                        Get information about congestion,
+                        unexpected halts and route diversions.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- HOW IT WORKS -->
+
+        <section class="workflow-section" id="how-it-works">
+
+            <div class="section-tag">
+                FOUR STEPS. ONE CONNECTED NETWORK.
+            </div>
+
+            <h2>
+                HOW WE <span>ROLL.</span>
+            </h2>
+
+            <div class="workflow-grid">
+
+                <article class="workflow-card">
+                    <span>01</span>
+                    <div>⌖</div>
+                    <h3>Check in</h3>
+                    <p>
+                        Conductors update their current bus stop.
+                    </p>
+                </article>
+
+                <article class="workflow-card">
+                    <span>02</span>
+                    <div>↗</div>
+                    <h3>Sync up</h3>
+                    <p>
+                        The system records the latest bus information.
+                    </p>
+                </article>
+
+                <article class="workflow-card">
+                    <span>03</span>
+                    <div>◎</div>
+                    <h3>Team up</h3>
+                    <p>
+                        Passengers can submit location reports.
+                    </p>
+                </article>
+
+                <article class="workflow-card">
+                    <span>04</span>
+                    <div>✳</div>
+                    <h3>Move out</h3>
+                    <p>
+                        Everyone gets better journey information.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- PORTALS -->
+
+        <section class="portals-section" id="portals">
+
+            <div class="section-tag">
+                ONE PLATFORM. THREE EXPERIENCES.
+            </div>
+
+            <div class="section-heading">
+
+                <h2>
+                    PICK YOUR<br>
+                    <span>PORTAL.</span>
+                </h2>
+
+                <p>
+                    A dedicated experience for every
+                    person in the transport network.
+                </p>
+
+            </div>
+
+
+            <div class="portal-grid">
+
+                <article class="portal-card passenger-portal">
+
+                    <span class="portal-number">01</span>
+
+                    <div class="portal-symbol">⌖</div>
+
+                    <span>FOR PASSENGERS</span>
+
+                    <h3>Passenger</h3>
+
+                    <p>
+                        Track buses, explore routes,
+                        check occupancy and report locations.
+                    </p>
+
+                    <a href="passenger.html">
+                        ENTER PORTAL ↗
+                    </a>
+
+                </article>
+
+
+                <article class="portal-card staff-portal">
+
+                    <span class="portal-number">02</span>
+
+                    <div class="portal-symbol">◈</div>
+
+                    <span>FOR CONDUCTORS</span>
+
+                    <h3>Conductor</h3>
+
+                    <p>
+                        Manage check-ins, bus occupancy
+                        and service updates.
+                    </p>
+
+                    <a href="conductor.html">
+                        ENTER PORTAL ↗
+                    </a>
+
+                </article>
+
+
+                <article class="portal-card admin-portal">
+
+                    <span class="portal-number">03</span>
+
+                    <div class="portal-symbol">▦</div>
+
+                    <span>FOR MANAGEMENT</span>
+
+                    <h3>Admin</h3>
+
+                    <p>
+                        Manage buses, routes, stops,
+                        staff and platform data.
+                    </p>
+
+                    <a href="admin.html">
+                        ENTER PORTAL ↗
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- FINAL CTA -->
+
+        <section class="final-cta">
+
+            <span>THE CITY IS MOVING.</span>
+
+            <h2>
+                ARE YOU<br>
+                <span>COMING?</span>
+            </h2>
+
+            <a href="#explore">
+                LET'S GET MOVING ↗
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <a href="#" class="brand">
+            <span class="brand-icon">N</span>
+            <span>TRANSIT<span class="brand-orange">NEXUS</span></span>
+        </a>
+
+        <p>
+            Connecting buses. Empowering passengers.
+        </p>
+
+        <span>© 2026 TRANSIT NEXUS</span>
+
+    </footer>
+
+
+    <!-- LEAFLET MAP JAVASCRIPT -->
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+    <!-- OUR SUPABASE JAVASCRIPT -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+
+    <!-- OUR JAVASCRIPT -->
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

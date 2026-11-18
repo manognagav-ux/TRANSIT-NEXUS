@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conductor Portal | TRANSIT NEXUS</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/conductor.css">
+</head>
+<body>
+
+<header class="topbar">
+    <a class="brand" href="index.html">
+        <span class="brand-icon">N</span>
+        <span>TRANSIT<span class="brand-accent">NEXUS</span></span>
+    </a>
+
+    <a class="back-link" href="index.html">← BACK TO HOME</a>
+</header>
+
+<main class="page">
+
+    <section class="intro">
+        <span class="eyebrow">02 / STAFF EXPERIENCE</span>
+        <h1>YOUR ROUTE.<br><span>YOUR CHECK-IN.</span></h1>
+        <p>Record stop check-ins, update occupancy and keep passenger information up to date.</p>
+
+        <div class="demo-notice">
+            <span class="status-dot"></span>
+            STAFF CHECK-IN PORTAL
+        </div>
+    </section>
+
+    <section class="dashboard">
+
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">TRIP MANAGEMENT</span>
+                <h2>Conductor dashboard</h2>
+            </div>
+
+            <span id="connectionStatus" class="connection-status">
+                CONNECTING...
+            </span>
+        </div>
+
+        <div class="selection-panel">
+            <label for="busSelect">SELECT YOUR BUS</label>
+
+            <select id="busSelect">
+                <option value="">Loading buses...</option>
+            </select>
+
+            <div id="busMessage" class="message" role="status">
+                Loading bus records...
+            </div>
+        </div>
+
+        <div id="tripPanel" hidden>
+
+            <div class="route-card">
+                <span class="eyebrow">CURRENT ROUTE</span>
+
+                <div class="route-display">
+                    <div class="route-point">
+                        <span class="route-marker"></span>
+                        <div>
+                            <small>START</small>
+                            <h3 id="startPoint">—</h3>
+                        </div>
+                    </div>
+
+                    <div class="route-line"></div>
+
+                    <div class="route-point">
+                        <span class="route-marker destination"></span>
+                        <div>
+                            <small>DESTINATION</small>
+                            <h3 id="endPoint">—</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="route-meta">
+                    <div>
+                        <span>Bus number</span>
+                        <strong id="selectedBusNumber">—</strong>
+                    </div>
+
+                    <div>
+                        <span>Route number</span>
+                        <strong id="routeNumber">—</strong>
+                    </div>
+
+                    <div>
+                        <span>Bus status</span>
+                        <strong id="busStatus">—</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkin-section">
+
+                <div class="checkin-copy">
+                    <span class="eyebrow">STOP CHECK-IN</span>
+                    <h2>Update your<br><span>current stop.</span></h2>
+                    <p>Select the stop where the bus has arrived. This record will be stored as a staff check-in.</p>
+                </div>
+
+                <form id="checkinForm" class="checkin-form">
+
+                    <label for="stopSelect">SELECT BUS STOP</label>
+                    <select id="stopSelect" required>
+                        <option value="">Loading stops...</option>
+                    </select>
+
+                    <label for="occupancySelect">BUS OCCUPANCY</label>
+                    <select id="occupancySelect">
+                        <option value="">Select occupancy</option>
+                        <option value="Low">Low</option>
+                        <option value="Moderate">Moderate</option>
+                        <option value="High">High</option>
+                        <option value="Full">Full</option>
+                    </select>
+
+                    <label for="checkinNotes">NOTES (OPTIONAL)</label>
+                    <textarea id="checkinNotes" rows="3" maxlength="300" placeholder="Add a short trip update..."></textarea>
+
+                    <button id="checkinButton" type="submit">
+                        RECORD STOP CHECK-IN ↗
+                    </button>
+
+                    <p id="checkinMessage" class="message" role="status"></p>
+
+                    <small>
+                        Check-ins record the stop selected by the conductor.
+                        They are not GPS-verified.
+                    </small>
+                </form>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="history-section">
+
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">DATABASE RECORDS</span>
+                <h2>Check-in history</h2>
+            </div>
+        </div>
+
+        <p id="historyMessage" class="message">
+            Select a bus to view its check-in history.
+        </p>
+
+        <div id="historyList" class="history-list"></div>
+
+    </section>
+
+    <section class="info-strip">
+        <div>
+            <span class="eyebrow">STAFF UPDATES</span>
+            <h2>Recorded.<br>Clearly labelled.</h2>
+        </div>
+
+        <p>
+            Staff check-ins are database records submitted by the conductor.
+            TRANSIT NEXUS does not claim that these records represent
+            GPS-verified location data.
+        </p>
+    </section>
+
+</main>
+
+<footer>
+    <a class="brand" href="index.html">
+        <span class="brand-icon">N</span>
+        <span>TRANSIT<span class="brand-accent">NEXUS</span></span>
+    </a>
+
+    <span>CONNECTING BUSES. EMPOWERING PASSENGERS.</span>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/conductor.js"></script>
+
+</body>
+</html>

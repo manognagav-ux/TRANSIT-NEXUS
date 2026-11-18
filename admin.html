@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal | TRANSIT NEXUS</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+<header class="topbar">
+    <a class="brand" href="index.html">
+        <span class="brand-icon">N</span>
+        <span>TRANSIT<span class="brand-accent">NEXUS</span></span>
+    </a>
+
+    <a class="back-link" href="index.html">← BACK TO HOME</a>
+</header>
+
+<main class="page">
+
+    <section class="intro">
+        <span class="eyebrow">03 / ADMINISTRATION</span>
+        <h1>CONTROL THE<br><span>NETWORK.</span></h1>
+        <p>
+            Monitor transport records, track staff activity and review
+            passenger-submitted reports from one central dashboard.
+        </p>
+
+        <div class="demo-notice">
+            <span class="status-dot"></span>
+            ADMINISTRATIVE DASHBOARD
+        </div>
+    </section>
+
+    <section class="dashboard">
+
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">SYSTEM OVERVIEW</span>
+                <h2>Network dashboard</h2>
+            </div>
+
+            <div class="heading-actions">
+                <span id="connectionStatus" class="connection-status">
+                    CONNECTING...
+                </span>
+
+                <button id="refreshButton" type="button">
+                    ↻ REFRESH
+                </button>
+            </div>
+        </div>
+
+        <p id="dashboardMessage" class="message">
+            Loading network information...
+        </p>
+
+        <div class="stats-grid">
+
+            <article class="stat-card">
+                <span class="stat-label">REGISTERED BUSES</span>
+                <strong id="totalBuses">—</strong>
+                <span class="stat-note">Bus database records</span>
+            </article>
+
+            <article class="stat-card">
+                <span class="stat-label">ACTIVE ROUTES</span>
+                <strong id="totalRoutes">—</strong>
+                <span class="stat-note">Active route records</span>
+            </article>
+
+            <article class="stat-card">
+                <span class="stat-label">BUS STOPS</span>
+                <strong id="totalStops">—</strong>
+                <span class="stat-note">Registered stop records</span>
+            </article>
+
+            <article class="stat-card">
+                <span class="stat-label">STAFF CHECK-INS</span>
+                <strong id="totalCheckins">—</strong>
+                <span class="stat-note">Recorded check-ins</span>
+            </article>
+
+            <article class="stat-card highlight-card">
+                <span class="stat-label">PASSENGER REPORTS</span>
+                <strong id="totalReports">—</strong>
+                <span class="stat-note">Community submissions</span>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="data-section">
+
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">TRANSPORT DATABASE</span>
+                <h2>Bus directory</h2>
+            </div>
+        </div>
+
+        <p id="busMessage" class="message">Loading bus records...</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>BUS NUMBER</th>
+                        <th>ROUTE</th>
+                        <th>OCCUPANCY</th>
+                        <th>STATUS</th>
+                        <th>LAST UPDATED</th>
+                    </tr>
+                </thead>
+                <tbody id="busTable">
+                    <tr>
+                        <td colspan="5">Loading buses...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+    <section class="data-section">
+
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">STAFF ACTIVITY</span>
+                <h2>Recent check-ins</h2>
+            </div>
+        </div>
+
+        <p id="checkinMessage" class="message">
+            Loading check-in records...
+        </p>
+
+        <div id="checkinList" class="record-list"></div>
+
+    </section>
+
+    <section class="data-section reports-section">
+
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">COMMUNITY FEEDBACK</span>
+                <h2>Passenger reports</h2>
+            </div>
+        </div>
+
+        <div class="filter-panel">
+            <label for="reportFilter">FILTER REPORTS BY STATUS</label>
+
+            <select id="reportFilter">
+                <option value="all">All reports</option>
+                <option value="pending">Pending</option>
+                <option value="other">Other statuses</option>
+            </select>
+        </div>
+
+        <p id="reportMessage" class="message">
+            Loading passenger reports...
+        </p>
+
+        <div id="reportList" class="record-list"></div>
+
+    </section>
+
+    <section class="info-strip">
+        <div>
+            <span class="eyebrow">SYSTEM TRANSPARENCY</span>
+            <h2>One network.<br>Multiple updates.</h2>
+        </div>
+
+        <p>
+            TRANSIT NEXUS distinguishes between staff check-ins and
+            passenger-submitted reports. Database records provide
+            operational information but do not independently establish
+            GPS-verified bus locations.
+        </p>
+    </section>
+
+</main>
+
+<footer>
+    <a class="brand" href="index.html">
+        <span class="brand-icon">N</span>
+        <span>TRANSIT<span class="brand-accent">NEXUS</span></span>
+    </a>
+
+    <span>CONNECTING BUSES. EMPOWERING PASSENGERS.</span>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/admin.js"></script>
+
+</body>
+</html>

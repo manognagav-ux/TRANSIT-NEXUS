@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passenger Portal | TRANSIT NEXUS</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/passenger.css">
+</head>
+
+<body>
+    <header class="topbar">
+        <a class="brand" href="index.html">
+            <span class="brand-icon">N</span>
+            <span>TRANSIT<span class="brand-accent">NEXUS</span></span>
+        </a>
+        <a class="back-link" href="index.html">← BACK TO HOME</a>
+    </header>
+
+    <main class="page">
+        <section class="intro">
+            <span class="eyebrow">01 / PASSENGER EXPERIENCE</span>
+            <h1>YOUR JOURNEY.<br><span>YOUR CONTROL.</span></h1>
+            <p>Find buses, explore routes and help keep transport information updated.</p>
+            <div class="demo-notice">
+                <span class="status-dot"></span>
+                PROTOTYPE NETWORK — SAMPLE BUS RECORDS
+            </div>
+        </section>
+
+        <section class="dashboard">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">LIVE DATABASE CONNECTION</span>
+                    <h2>Available buses</h2>
+                </div>
+                <span id="connectionStatus" class="connection-status">CONNECTING...</span>
+            </div>
+
+            <div class="search-panel">
+                <label for="busSearch">SEARCH BY BUS NUMBER OR DESTINATION</label>
+                <div class="search-row">
+                    <input id="busSearch" type="search" placeholder="Try 218, Uppal or Secunderabad">
+                    <button id="searchButton" type="button">SEARCH ↗</button>
+                </div>
+                <button id="clearSearch" class="clear-button" type="button">CLEAR SEARCH</button>
+            </div>
+
+            <div id="busMessage" class="message" role="status">Loading buses from database...</div>
+            <div id="busList" class="bus-grid"></div>
+        </section>
+
+        <section class="report-section">
+            <div class="report-copy">
+                <span class="eyebrow">COMMUNITY-POWERED UPDATES</span>
+                <h2>Missed a check-in?<br><span>Help us update it.</span></h2>
+                <p>If a conductor has missed updating the bus at a stop, you can submit a passenger report. Reports are labelled as passenger-submitted and are not treated as staff-verified updates.</p>
+            </div>
+
+            <form id="reportForm" class="report-form">
+                <label for="reportBus">SELECT BUS</label>
+                <select id="reportBus" required>
+                    <option value="">Loading buses...</option>
+                </select>
+
+                <label for="reportStop">SELECT YOUR BUS STOP</label>
+                <select id="reportStop" required>
+                    <option value="">Loading stops...</option>
+                </select>
+
+                <label for="reportDescription">ADDITIONAL INFORMATION (OPTIONAL)</label>
+                <textarea id="reportDescription" rows="3" maxlength="300" placeholder="Add a short note about the missed update..."></textarea>
+
+                <button id="reportButton" type="submit">SUBMIT PASSENGER REPORT ↗</button>
+                <p id="reportMessage" class="message" role="status"></p>
+                <small>Submitting a report does not verify a bus location. Reports may need staff confirmation.</small>
+            </form>
+        </section>
+
+        <section class="info-strip">
+            <div>
+                <span class="eyebrow">OUR APPROACH</span>
+                <h2>People-powered.<br>Clearly labelled.</h2>
+            </div>
+            <p>Staff check-ins and passenger reports are different information sources. TRANSIT NEXUS keeps that distinction visible so passengers can judge how recent and reliable an update may be.</p>
+        </section>
+    </main>
+
+    <footer>
+        <a class="brand" href="index.html">
+            <span class="brand-icon">N</span>
+            <span>TRANSIT<span class="brand-accent">NEXUS</span></span>
+        </a>
+        <span>CONNECTING BUSES. EMPOWERING PASSENGERS.</span>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/passenger.js"></script>
+</body>
+</html>
